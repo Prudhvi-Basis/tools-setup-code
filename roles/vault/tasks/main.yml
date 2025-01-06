@@ -1,5 +1,10 @@
+- name: set Prompt
+  ansible.builtin.shell: set-prompt {{ tool_name }}
+
+
+
 - name: Download Hashicorp repo file
-  ansible.builtin.repo_url:
+  ansible.builtin.get_url:
     url: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
     dest: /etc/yum.repos.d/hashicorp.repo
 
@@ -14,7 +19,7 @@
     dest: /etc/vault.d/vault.hcl
 
 
-#- name: start vault service
-#  ansible.builtin.systemd_service:
-#    name: vault
-#    state: restarted
+- name: start vault service
+  ansible.builtin.systemd_service:
+    name: vault
+    state: restarted
