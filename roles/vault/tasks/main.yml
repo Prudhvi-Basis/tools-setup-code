@@ -15,8 +15,8 @@
 
 - name: copy vault config
   ansible.builtin.copy:
-    src: config.hcl
-    dest: /etc/vault.d/config.hcl
+    src: vault.hcl
+    dest: /etc/vault.d/vault.hcl
 
 
 - name: Start Vault Service
