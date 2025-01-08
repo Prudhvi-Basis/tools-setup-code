@@ -59,7 +59,7 @@ path                 =  "${vault_mount.roboshop-dev.path}/user"
 
    data_json = <<EOT
 {
-   "MONGO" : "true"
+
    "MONGO_URL" : "mongodb://mongodb-dev.devops11.online:27017/user",
    "REDIS_URL" : "redis://redis-dev.devops11.online:6379"
 
