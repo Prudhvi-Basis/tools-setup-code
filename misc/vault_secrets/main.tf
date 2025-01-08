@@ -22,7 +22,7 @@ variable "vault_token" {}
 
 resource "vault_generic_secret" "roboshop-dev" {
 
-  path                 =  "roboshop-dev/frontend"
+  path                 =  "${vault_mount.roboshop-dev.path}/frontend"
 
 
   data_json = <<EOT
