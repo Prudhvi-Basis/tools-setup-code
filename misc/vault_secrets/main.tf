@@ -44,7 +44,7 @@ resource "vault_generic_secret" "catalogue-dev" {
 
   data_json = <<EOT
 {
-   "MONGO" : "true"
+
    "MONGO_URL" : "mongodb://mongodb-dev.devops11.online:27017/catalogue",
    "CATALOGUE_PORT" : "8080"
 
