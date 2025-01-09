@@ -1,0 +1,22 @@
+- name: Set Prompt
+  ansible.builtin.shell: set-prompt {{ tool_name }}
+
+- name: Add github runner
+  ansible.builtin.user:
+    name: github-runner
+
+- name: Create runner directory
+  ansible.builtin.file:
+    path: /actions-runner
+    state: directory
+
+- name: Download Runner
+  ansible.builtin.unarchive:
+    src: https://github.com/actions/runner/releases/downlaod/v2.230.0/actions-runner-osx-64-2.320.0.tar.gz
+    dest: /actions-runner
+    remote_src: yes
+
+- name: Install libicu
+  ansible.builtin.dnf:
+    name: libicu
+    state: installed
