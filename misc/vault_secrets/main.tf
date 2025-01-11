@@ -20,7 +20,7 @@ resource "vault_mount" "roboshop-dev" {
 }
 
 
-resource "vault_generic_secret" "roboshop-dev" {
+resource "vault_generic_secret" "frontend-dev" {
 
   path                 =  "${vault_mount.roboshop-dev.path}/frontend"
 
