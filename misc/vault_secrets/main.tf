@@ -4,12 +4,6 @@ terraform {
     key    = "vault-secrets/terraform.tfstate"
     region = "us-east-1"
   }
-  required_providers {
-    vault = {
-      source  = "hashicorp/vault"
-      version = "4.3.0"
-    }
-  }
 }
 provider "vault" {
   address = "http://vault-internal.devops11.online:8200"
