@@ -4,6 +4,12 @@ terraform {
     key    = "vault-secrets/terraform.tfstate"
     region = "us-east-1"
   }
+  required_providers {
+    vault = {
+      source  = "hashicorp/vault"
+      version = "4.3.0"
+    }
+  }
 }
 provider "vault" {
   address = "http://vault-internal.devops11.online:8200"
@@ -147,6 +153,24 @@ resource "vault_generic_secret" "rabbitmq-dev" {
    "password" : "Roboshop@123"
 
 
+}
+EOT
+}
+
+resource "vault_mount" "infra-secrets" {
+  path = "infra-secrets"
+  type = "kv"
+  options = { version = "2" }
+  description = "All Infra Related Secrets "
+}
+
+resource "vault_generic_secret" "ssh" {
+  path      = "${vault_mount.infra-secrets.path}/ssh"
+
+  data_json = <<EOT
+{
+  "username" : "ec2-user",
+  "password" : "DevOps321"
 }
 EOT
 }
